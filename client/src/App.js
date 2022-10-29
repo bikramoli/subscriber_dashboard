@@ -1,7 +1,20 @@
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
+import SideBar from "./components/sideBar/SideBar";
+
 function App() {
   return (
     <div className="App">
-      <h1>Subscriber_dashboard</h1>
+      <Router>
+        <Routes>
+          <Route path="/" element={<SideBar />}></Route>
+        </Routes>
+      </Router>
     </div>
   );
 }
