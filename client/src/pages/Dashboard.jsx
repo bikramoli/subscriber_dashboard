@@ -1,8 +1,10 @@
+import Table from "../components/table/Table";
+
 const Dashboard = () => {
   return (
-    <>
-      <h1>Dashboard</h1>
-    </>
+    <main>
+      <Table />
+    </main>
   );
 };
 export default Dashboard;
