@@ -2,7 +2,7 @@ import "./Style.css";
 
 const SideBar = () => {
   return (
-    <div className="sidebar">
+    <div>
       {/* sidebar-header */}
       <div className="sidebar-header">
         <h3 className="brand">
