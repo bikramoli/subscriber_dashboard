@@ -1,0 +1,28 @@
+.search-box {
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+.search-form {
+  align-items: center;
+  display: flex;
+}
+.search-input {
+  border: 3px solid #0097e6;
+  border-right: 0px;
+  outline: none;
+  height: 48px;
+  padding: 8px;
+  font-size: 30px;
+  color: #0097e6;
+  text-transform: capitalize;
+}
+::placeholder {
+  color: #0097e6;
+  font-size: 18px;
+}
+.search-button {
+  background-color: #0097e6;
+  padding: 14px;
+  line-height: 4px;
+}
