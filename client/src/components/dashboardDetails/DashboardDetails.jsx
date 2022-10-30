@@ -1,5 +1,5 @@
 import "./Style.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import DropDownMenu from "../dropDownMenu/DropDownMenu";
 import SearchBox from "../searchbox/SearchBox";
 import Table from "../table/Table";
@@ -22,6 +22,7 @@ const DashboardDetails = () => {
   const [checkBoxFilters, setCheckBoxFilter] = useState([]);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const formRef = useRef(null);
 
   const handleCheckBoxFilters = (e) => {
     let { checked: value, name } = e.target;
@@ -49,10 +50,18 @@ const DashboardDetails = () => {
     }
   };
 
+  const handleReset = () => {
+    formRef.current.reset();
+    setFilters({});
+    setCheckBoxFilter([]);
+    setStartDate(null);
+    setEndDate(null);
+  };
+
   console.log(checkBoxFilters, "checkBoxFilters");
   return (
     <WrapperMain>
-      <div className="filters">
+      <form ref={formRef} className="filters">
         <SearchBox value={filters.search} handleFilters={handleFilters} />
         <DropDownMenu
           title="Select an Options"
@@ -69,7 +78,10 @@ const DashboardDetails = () => {
           name={"endDate"}
           handleChange={(e) => setEndDate(e.target.value)}
         />
-      </div>
+        <span className="filter-clear" onClick={handleReset}>
+          Clear All Filters
+        </span>
+      </form>
       <Table
         startDate={startDate}
         endDate={endDate}

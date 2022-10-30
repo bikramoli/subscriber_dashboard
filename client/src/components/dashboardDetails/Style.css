@@ -3,3 +3,7 @@
   align-items: center;
   width: 100%;
 }
+.filter-clear {
+  cursor: pointer;
+  margin-left: 10px;
+}

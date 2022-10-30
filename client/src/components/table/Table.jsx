@@ -90,6 +90,14 @@ const Table = (props) => {
               <th>Status</th>
               <th>Join Date</th>
             </tr>
+            {/* <tr>
+              {columns &&
+                columns.map((head, index) => (
+                  <th key={index} scope="col" className="  px-6 py-4 text-left">
+                    {getCaps(head.header, head.field)}
+                  </th>
+                ))}
+            </tr> */}
           </thead>
           <tbody>
             {users.data &&
@@ -114,6 +122,20 @@ const Table = (props) => {
                   <td>{item.join_date}</td>
                 </tr>
               ))}
+
+            {/* {data &&
+              data.map((row, index) => (
+                <tr key={index} className="border-b">
+                  {columns.map((col, index) => (
+                    <td
+                      key={index}
+                      className=" px-6 py-4 whitespace-nowrap font-Inter"
+                    >
+                      {row[col.field]}
+                    </td>
+                  ))}
+                </tr>
+              ))} */}
           </tbody>
         </table>
       </CardWrapper>
