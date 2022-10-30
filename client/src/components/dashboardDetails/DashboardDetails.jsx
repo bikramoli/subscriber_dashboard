@@ -9,10 +9,27 @@ const DashboardDetails = () => {
     error: false,
     data: [],
   });
+  // filters state
+  const [filters, setFilters] = useState({});
+
+  const handleFilters = (e) => {
+    let value = e.target.value;
+    setFilters((prev) => ({
+      ...prev,
+      [e.target.name]: value,
+    }));
+
+    if (value === "" && filters.hasOwnProperty(e.target.name)) {
+      let temp = filters;
+      delete temp[`${e.target.name}`];
+      setFilters(temp);
+    }
+  };
+  console.log(filters, "filter");
   return (
     <WrapperMain>
-      <SearchBox />
-      <Table users={users} setUsers={setUsers} />
+      <SearchBox value={filters.search} handleFilters={handleFilters} />
+      <Table users={users} setUsers={setUsers} filters={filters} />
     </WrapperMain>
   );
 };

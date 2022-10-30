@@ -1,10 +1,18 @@
 import "./Style.css";
 
-const SearchBox = () => {
+const SearchBox = (props) => {
+  const { value, handleFilters } = props;
   return (
     <div class="search-box">
       <form className="search-form">
-        <input type="text" name="" placeholder="Search" className="search-input"/>
+        <input
+          type="text"
+          name="search"
+          placeholder="Search"
+          className="search-input"
+          value={value ? value : ""}
+          onChange={handleFilters}
+        />
         <button className="search-button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
