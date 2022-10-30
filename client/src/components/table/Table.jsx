@@ -4,7 +4,7 @@ import users_datas from "../../assets/datas/users.json";
 import "./Style.css";
 
 const Table = (props) => {
-  const { users, setUsers, filters } = props;
+  const { users, setUsers, filters, checkBoxFilters } = props;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +23,11 @@ const Table = (props) => {
   console.log(users, "user");
 
   const filterData = (data) => {
-    if (!filters.hasOwnProperty("search") || filters.search === "") return data;
+    if (
+      (!filters.hasOwnProperty("search") || filters.search === "") &&
+      (!checkBoxFilters || checkBoxFilters.length === 0)
+    )
+      return data;
     let temp = [];
 
     if (filters.hasOwnProperty("search") && filters.search)
@@ -36,6 +40,17 @@ const Table = (props) => {
             el.country.toLowerCase().includes(filters.search.toLowerCase())
         ),
       ];
+
+    if (checkBoxFilters && checkBoxFilters.length > 0) {
+      console.log(data[0].status);
+      temp = [
+        ...temp,
+        ...data.filter((el) =>
+          checkBoxFilters.includes(el.active.toLowerCase())
+        ),
+      ];
+      console.log("after check box", temp);
+    }
 
     console.log(temp);
     return temp;
