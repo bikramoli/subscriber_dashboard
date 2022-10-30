@@ -22,9 +22,34 @@ body {
   background-color: var(--body-bg);
   font-family: "Roboto", sans-serif;
 }
-main {
+/* main {
   margin-top: 60px;
   background-color: #f1f5f9;
   min-height: 90vh;
   padding: 1rem 3rem;
+} */
+
+@media only screen and (max-width: 1200px) {
+  .sidebar {
+    width: 60px;
+  }
+
+  .sidebar .sidebar-header h3 span,
+  .sidebar li span:last-child {
+    display: none;
+  }
+
+  .sidebar .sidebar-header,
+  .sidebar li {
+    display: flex;
+    justify-content: center;
+  }
+
+  .main-content {
+    margin-left: 60px;
+  }
+
+  .main-content header {
+    left: 60px;
+  }
 }

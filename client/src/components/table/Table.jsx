@@ -1,19 +1,29 @@
 import { useEffect } from "react";
 import moment from "moment/moment.js";
 import CardWrapper from "../card/CardWrapper";
-import users_datas from "../../assets/datas/users.json";
 import "./Style.css";
 import axios from "axios";
+import Pagination from "../pagination/Pagination";
 
 const Table = (props) => {
-  const { users, setUsers, filters, checkBoxFilters, startDate, endDate } =
-    props;
+  const {
+    users,
+    setUsers,
+    filters,
+    checkBoxFilters,
+    startDate,
+    endDate,
+    nPages,
+    currentPage,
+    setCurrentPage,
+  } = props;
+
+  
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setUsers({ loading: true, error: false, data: [] });
-        // const data = await users_datas;
         const data = await axios.get("user.json").then((res) => {
           return res.data;
         });
@@ -25,8 +35,6 @@ const Table = (props) => {
     };
     fetchData();
   }, [setUsers]);
-
-  console.log(users, "user");
 
   const filterData = (data) => {
     if (
@@ -82,25 +90,24 @@ const Table = (props) => {
     <>
       <CardWrapper>
         <h1></h1>
-        {/* <br /> */}
         <table>
           <thead>
             <tr>
-              <th>S/N</th>
-              <th>Fullname</th>
-              <th>Email</th>
-              <th>Username</th>
-              <th>Country</th>
-              <th>Status</th>
-              <th>Join Date</th>
-              <th>Action</th>
+              <th>ID</th>
+              <th>FULLNAME</th>
+              <th>EMAIL</th>
+              <th>USERNAME</th>
+              <th>COUNTRY</th>
+              <th>STATUS</th>
+              <th>JOIN DATE</th>
+              <th>ACTION</th>
             </tr>
           </thead>
           <tbody>
             {users &&
               filterData(users).map((item, index) => (
                 <tr key={index}>
-                  <td>{index + 1}</td>
+                  <td>{item.id}</td>
                   <td>
                     {item.first_name +
                       " " +
@@ -142,6 +149,11 @@ const Table = (props) => {
               ))}
           </tbody>
         </table>
+        <Pagination
+          nPages={nPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </CardWrapper>
     </>
   );

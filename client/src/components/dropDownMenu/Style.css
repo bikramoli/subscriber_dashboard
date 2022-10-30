@@ -15,7 +15,7 @@
   border: 2px solid #e3e1e1;
   display: flex;
   justify-content: space-between;
-  color: #0097e6;
+  color: var(--color-dark);
 }
 .overSelect {
   left: 0;
@@ -40,7 +40,7 @@ input[type="checkbox"] {
   margin-bottom: 13px;
 }
 #checkboxes label {
-    color: #0097e6;
+  color: var(--color-dark);
   font-weight: bold;
   display: block;
 }

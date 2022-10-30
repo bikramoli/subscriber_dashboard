@@ -5,7 +5,6 @@ import SearchBox from "../searchbox/SearchBox";
 import Table from "../table/Table";
 import WrapperMain from "../wrapper/WrapperMain";
 import DatePickers from "../datePicker/DatePicker";
-import Pagination from "../pagination/Pagination";
 
 const optionList = [
   { name: "0", title: "In-active" },
@@ -72,31 +71,35 @@ const DashboardDetails = () => {
   );
   const nPages = Math.ceil(users.data.length / recordsPerPage);
 
-  console.log(currentRecords, "currentRecords");
-
   return (
     <WrapperMain>
-      <form ref={formRef} className="filters">
-        <SearchBox value={filters.search} handleFilters={handleFilters} />
-        <DropDownMenu
-          title="Select an Options"
-          options={optionList}
-          handleCheckBoxFilters={handleCheckBoxFilters}
-        />
-        <DatePickers
-          label={"From"}
-          name={"startDate"}
-          handleChange={(e) => setStartDate(e.target.value)}
-        />
-        <DatePickers
-          label={"To"}
-          name={"endDate"}
-          handleChange={(e) => setEndDate(e.target.value)}
-        />
-        <span className="filter-clear" onClick={handleReset}>
-          Clear All Filters
+      <div className="dashboard-details-header">
+        <h1>Subscriber List</h1>
+        <span>
+          <form ref={formRef} className="filters">
+            <SearchBox value={filters.search} handleFilters={handleFilters} />
+            <DropDownMenu
+              title="Select an Options"
+              options={optionList}
+              handleCheckBoxFilters={handleCheckBoxFilters}
+            />
+            <DatePickers
+              label={"From"}
+              name={"startDate"}
+              handleChange={(e) => setStartDate(e.target.value)}
+            />
+            <DatePickers
+              label={"To"}
+              name={"endDate"}
+              handleChange={(e) => setEndDate(e.target.value)}
+            />
+            <span className="filter-clear" onClick={handleReset}>
+              Clear All Filters
+            </span>
+          </form>
         </span>
-      </form>
+      </div>
+
       <Table
         startDate={startDate}
         endDate={endDate}
@@ -104,8 +107,6 @@ const DashboardDetails = () => {
         setUsers={setUsers}
         filters={filters}
         checkBoxFilters={checkBoxFilters}
-      />
-      <Pagination
         nPages={nPages}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
