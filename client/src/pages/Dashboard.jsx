@@ -1,10 +1,10 @@
-import Table from "../components/table/Table";
+import DashboardDetails from "../components/dashboardDetails/DashboardDetails";
 
 const Dashboard = () => {
   return (
-    <main>
-      <Table />
-    </main>
+    <>
+      <DashboardDetails />
+    </>
   );
 };
 export default Dashboard;

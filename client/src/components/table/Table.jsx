@@ -1,7 +1,27 @@
+import { useEffect } from "react";
 import CardWrapper from "../card/CardWrapper";
+import users_datas from "../../assets/datas/users.json";
 import "./Style.css";
 
-const Table = () => {
+const Table = (props) => {
+  const { users, setUsers } = props;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setUsers({ loading: true, error: false, data: [] });
+        const data = await users_datas;
+        setUsers({ loading: false, error: false, data: data });
+      } catch (error) {
+        setUsers((prev) => ({ ...prev, loading: false, error: true }));
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  }, [setUsers]);
+
+  console.log(users, "user");
+
   return (
     <>
       <CardWrapper>
@@ -11,28 +31,35 @@ const Table = () => {
           <thead>
             <tr>
               <th>S/N</th>
-              <th>Username</th>
+              <th>Fullname</th>
               <th>Email</th>
               <th>Country</th>
               <th>Status</th>
-              <th>Package</th>
               <th>Join Date</th>
-              <th>Expire Date</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Biramdnf</td>
-              <td>bik@ndfnd.com</td>
-              <td>Nepal</td>
-              <td>
-                <span className="badge success">Active</span>
-              </td>
-              <td>Unlimited</td>
-              <td>10 oct 2022</td>
-              <td>10 oct 2022</td>
-            </tr>
+            {users &&
+              users.data.map((item, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>
+                    {item.first_name +
+                      " " +
+                      item.middle_name +
+                      " " +
+                      item.last_name}
+                  </td>
+                  <td>{item.email}</td>
+                  <td>{item.country}</td>
+                  <td>
+                    <span className="badge success">
+                      {item.active === "0" ? "Unactive" : "Active"}
+                    </span>
+                  </td>
+                  <td>{item.join_date}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </CardWrapper>
