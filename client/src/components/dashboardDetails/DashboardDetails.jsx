@@ -5,6 +5,7 @@ import SearchBox from "../searchbox/SearchBox";
 import Table from "../table/Table";
 import WrapperMain from "../wrapper/WrapperMain";
 import DatePickers from "../datePicker/DatePicker";
+import Pagination from "../pagination/Pagination";
 
 const optionList = [
   { name: "0", title: "In-active" },
@@ -17,13 +18,17 @@ const DashboardDetails = () => {
     error: false,
     data: [],
   });
-  
+
   // filters state
   const [filters, setFilters] = useState({});
   const [checkBoxFilters, setCheckBoxFilter] = useState([]);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const formRef = useRef(null);
+
+  // pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(10);
 
   const handleCheckBoxFilters = (e) => {
     let { checked: value, name } = e.target;
@@ -59,6 +64,16 @@ const DashboardDetails = () => {
     setEndDate(null);
   };
 
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = users.data.slice(
+    indexOfFirstRecord,
+    indexOfLastRecord
+  );
+  const nPages = Math.ceil(users.data.length / recordsPerPage);
+
+  console.log(currentRecords, "currentRecords");
+
   return (
     <WrapperMain>
       <form ref={formRef} className="filters">
@@ -85,10 +100,15 @@ const DashboardDetails = () => {
       <Table
         startDate={startDate}
         endDate={endDate}
-        users={users}
+        users={currentRecords}
         setUsers={setUsers}
         filters={filters}
         checkBoxFilters={checkBoxFilters}
+      />
+      <Pagination
+        nPages={nPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
     </WrapperMain>
   );

@@ -97,8 +97,8 @@ const Table = (props) => {
             </tr>
           </thead>
           <tbody>
-            {users.data &&
-              filterData(users.data).map((item, index) => (
+            {users &&
+              filterData(users).map((item, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
