@@ -4,6 +4,7 @@ import DropDownMenu from "../dropDownMenu/DropDownMenu";
 import SearchBox from "../searchbox/SearchBox";
 import Table from "../table/Table";
 import WrapperMain from "../wrapper/WrapperMain";
+import DatePickers from "../datePicker/DatePicker";
 
 const optionList = [
   { name: "0", title: "In-active" },
@@ -19,6 +20,8 @@ const DashboardDetails = () => {
   // filters state
   const [filters, setFilters] = useState({});
   const [checkBoxFilters, setCheckBoxFilter] = useState([]);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   const handleCheckBoxFilters = (e) => {
     let { checked: value, name } = e.target;
@@ -45,6 +48,7 @@ const DashboardDetails = () => {
       setFilters(temp);
     }
   };
+
   console.log(checkBoxFilters, "checkBoxFilters");
   return (
     <WrapperMain>
@@ -55,8 +59,20 @@ const DashboardDetails = () => {
           options={optionList}
           handleCheckBoxFilters={handleCheckBoxFilters}
         />
+        <DatePickers
+          label={"From"}
+          name={"startDate"}
+          handleChange={(e) => setStartDate(e.target.value)}
+        />
+        <DatePickers
+          label={"To"}
+          name={"endDate"}
+          handleChange={(e) => setEndDate(e.target.value)}
+        />
       </div>
       <Table
+        startDate={startDate}
+        endDate={endDate}
         users={users}
         setUsers={setUsers}
         filters={filters}

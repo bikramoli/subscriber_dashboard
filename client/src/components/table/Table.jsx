@@ -1,10 +1,12 @@
 import { useEffect } from "react";
+import moment from "moment/moment.js";
 import CardWrapper from "../card/CardWrapper";
 import users_datas from "../../assets/datas/users.json";
 import "./Style.css";
 
 const Table = (props) => {
-  const { users, setUsers, filters, checkBoxFilters } = props;
+  const { users, setUsers, filters, checkBoxFilters, startDate, endDate } =
+    props;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +27,8 @@ const Table = (props) => {
   const filterData = (data) => {
     if (
       (!filters.hasOwnProperty("search") || filters.search === "") &&
-      (!checkBoxFilters || checkBoxFilters.length === 0)
+      (!checkBoxFilters || checkBoxFilters.length === 0) &&
+      (!startDate || !endDate)
     )
       return data;
     let temp = [];
@@ -36,6 +39,13 @@ const Table = (props) => {
         ...data.filter(
           (el) =>
             el.email.toLowerCase().includes(filters.search.toLowerCase()) ||
+            el.first_name
+              .toLowerCase()
+              .includes(filters.search.toLowerCase()) ||
+            el.middle_name
+              .toLowerCase()
+              .includes(filters.search.toLowerCase()) ||
+            el.last_name.toLowerCase().includes(filters.search.toLowerCase()) ||
             el.username.toLowerCase().includes(filters.search.toLowerCase()) ||
             el.country.toLowerCase().includes(filters.search.toLowerCase())
         ),
@@ -51,6 +61,14 @@ const Table = (props) => {
       ];
       console.log("after check box", temp);
     }
+
+    if (startDate && endDate)
+      temp = [
+        ...temp,
+        ...data.filter((el) =>
+          moment(el.join_date).isBetween(moment(startDate), moment(endDate))
+        ),
+      ];
 
     console.log(temp);
     return temp;

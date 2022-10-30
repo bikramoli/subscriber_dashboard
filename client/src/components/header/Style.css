@@ -14,16 +14,12 @@ header {
   transition: 500ms;
 }
 
-.search-wrapper {
+.header-right-wrapper {
   display: flex;
   align-items: center;
 }
-
-.search-wrapper input {
-  border: 0;
-  outline: 0;
-  padding: 1rem;
-  height: 38px;
+.header-date{
+  margin-left: 20px;
 }
 
 .social-icons {

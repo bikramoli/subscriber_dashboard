@@ -8,20 +8,22 @@
   display: flex;
 }
 .search-input {
-  border: 3px solid #0097e6;
+  border: 2px solid #d4d4d7;
   border-right: 0px;
   outline: none;
   height: 48px;
   padding: 8px;
   font-size: 18px;
-  color: #0097e6;
   text-transform: capitalize;
+  color: #0097e6;
+
 }
 ::placeholder {
   color: #0097e6;
   font-size: 18px;
 }
 .search-button {
+  border: 2px solid #c8c8c9;
   background-color: #0097e6;
   padding: 14px;
   line-height: 4px;
