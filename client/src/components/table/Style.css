@@ -5,8 +5,10 @@ h3 {
 
 table {
   width: 100%;
-  height: 80vh;
   border-collapse: collapse;
+}
+.table {
+  height: 75vh;
 }
 
 thead {

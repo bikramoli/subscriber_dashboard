@@ -103,7 +103,8 @@ const DashboardDetails = () => {
       <Table
         startDate={startDate}
         endDate={endDate}
-        users={currentRecords}
+        currentRecords={currentRecords}
+        users={users}
         setUsers={setUsers}
         filters={filters}
         checkBoxFilters={checkBoxFilters}
