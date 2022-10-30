@@ -1,4 +1,6 @@
+import "./Style.css";
 import { useState } from "react";
+import DropDownMenu from "../dropDownMenu/DropDownMenu";
 import SearchBox from "../searchbox/SearchBox";
 import Table from "../table/Table";
 import WrapperMain from "../wrapper/WrapperMain";
@@ -28,7 +30,11 @@ const DashboardDetails = () => {
   console.log(filters, "filter");
   return (
     <WrapperMain>
-      <SearchBox value={filters.search} handleFilters={handleFilters} />
+      <div className="filters">
+        <SearchBox value={filters.search} handleFilters={handleFilters} />
+        <DropDownMenu />
+      </div>
+
       <Table users={users} setUsers={setUsers} filters={filters} />
     </WrapperMain>
   );
