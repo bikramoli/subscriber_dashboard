@@ -24,7 +24,7 @@
 }
 .search-button {
   border: 2px solid #c8c8c9;
-  background-color: #0097e6;
+  background-color: var(--main-color);
   padding: 14px;
   line-height: 4px;
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
-const baseURL = "./users.json";
+const baseURL = 'subscriptions.json';
 
-const API = axios.create({
+const API = axios.get({
   baseURL,
   headers: {
     "Content-Type": "application/json",

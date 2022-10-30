@@ -17,6 +17,7 @@ const DashboardDetails = () => {
     error: false,
     data: [],
   });
+  
   // filters state
   const [filters, setFilters] = useState({});
   const [checkBoxFilters, setCheckBoxFilter] = useState([]);
@@ -58,7 +59,6 @@ const DashboardDetails = () => {
     setEndDate(null);
   };
 
-  console.log(checkBoxFilters, "checkBoxFilters");
   return (
     <WrapperMain>
       <form ref={formRef} className="filters">

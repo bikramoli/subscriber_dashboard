@@ -9,19 +9,20 @@ table {
 }
 
 thead {
-  background: #efefef;
+  background-color: var(--main-color);
   text-align: left;
 }
 
 th,
 td {
-  font-size: 0.9rem;
+  font-size: 1rem;
   padding: 1rem 1rem;
-  color: var(--color-dark);
+  color: white;
 }
 
 td {
-  font-size: 0.8rem;
+  font-size: 1rem;
+  color: black;
 }
 
 tbody tr:nth-child(even) {
@@ -29,19 +30,19 @@ tbody tr:nth-child(even) {
 }
 
 .badge {
-  padding: 0.2rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 20px;
   font-weight: 700;
   font-size: 0.7rem;
 }
 
 .badge.success {
-  background: #def7ec;
+  background: var(--color-success);
   color: var(--main-color);
 }
 
 .badge.warning {
-  background: #f0f6b2;
+  background: var(--color-warning);
   color: orange;
 }
 
@@ -61,3 +62,9 @@ tbody tr:nth-child(even) {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.table-view-icon {
+  height: 30px;
+  width: 30px;
+}
+
+

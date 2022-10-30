@@ -17,8 +17,10 @@ header {
 .header-right-wrapper {
   display: flex;
   align-items: center;
+  color: var(--main-color);
+  font-weight: bold;
 }
-.header-date{
+.header-date {
   margin-left: 20px;
 }
 

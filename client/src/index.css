@@ -5,6 +5,8 @@
   --color-dark: #1d2231;
   --text-gray: #8390a2;
   --body-bg: #f1f5f9;
+  --color-success: #def7ec;
+  --color-warning: #f0f6b2;
 }
 
 * {
@@ -26,4 +28,3 @@ main {
   min-height: 90vh;
   padding: 1rem 3rem;
 }
-

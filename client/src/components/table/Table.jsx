@@ -3,6 +3,7 @@ import moment from "moment/moment.js";
 import CardWrapper from "../card/CardWrapper";
 import users_datas from "../../assets/datas/users.json";
 import "./Style.css";
+import axios from "axios";
 
 const Table = (props) => {
   const { users, setUsers, filters, checkBoxFilters, startDate, endDate } =
@@ -12,7 +13,10 @@ const Table = (props) => {
     const fetchData = async () => {
       try {
         setUsers({ loading: true, error: false, data: [] });
-        const data = await users_datas;
+        // const data = await users_datas;
+        const data = await axios.get("user.json").then((res) => {
+          return res.data;
+        });
         setUsers({ loading: false, error: false, data: data });
       } catch (error) {
         setUsers((prev) => ({ ...prev, loading: false, error: true }));
@@ -77,8 +81,8 @@ const Table = (props) => {
   return (
     <>
       <CardWrapper>
-        <h3>Recent activity</h3>
-
+        <h1></h1>
+        {/* <br /> */}
         <table>
           <thead>
             <tr>
@@ -89,15 +93,8 @@ const Table = (props) => {
               <th>Country</th>
               <th>Status</th>
               <th>Join Date</th>
+              <th>Action</th>
             </tr>
-            {/* <tr>
-              {columns &&
-                columns.map((head, index) => (
-                  <th key={index} scope="col" className="  px-6 py-4 text-left">
-                    {getCaps(head.header, head.field)}
-                  </th>
-                ))}
-            </tr> */}
           </thead>
           <tbody>
             {users.data &&
@@ -115,27 +112,34 @@ const Table = (props) => {
                   <td>{item.username}</td>
                   <td>{item.country}</td>
                   <td>
-                    <span className="badge success">
-                      {item.active === "0" ? "Unactive" : "Active"}
+                    <span className="badge">
+                      {item.active === "0" ? (
+                        <span className="badge warning">Inactive </span>
+                      ) : (
+                        <span className="badge success">Active </span>
+                      )}
                     </span>
                   </td>
                   <td>{item.join_date}</td>
+                  <td>
+                    <a href="/">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="table-view-icon"
+                        viewBox="0 0 20 20"
+                        fill="blue"
+                      >
+                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                        <path
+                          fillRule="evenodd"
+                          d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </td>
                 </tr>
               ))}
-
-            {/* {data &&
-              data.map((row, index) => (
-                <tr key={index} className="border-b">
-                  {columns.map((col, index) => (
-                    <td
-                      key={index}
-                      className=" px-6 py-4 whitespace-nowrap font-Inter"
-                    >
-                      {row[col.field]}
-                    </td>
-                  ))}
-                </tr>
-              ))} */}
           </tbody>
         </table>
       </CardWrapper>
