@@ -7,9 +7,9 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
-.table {
+/* .table {
   height: 75vh;
-}
+} */
 
 thead {
   background-color: var(--main-color);

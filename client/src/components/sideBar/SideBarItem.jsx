@@ -35,7 +35,7 @@ export const sideBarItem = [
     items: [
       {
         id: "user",
-        icon: Profile_icon,
+        icon: Subscriber_icon,
         name: "User",
         subitems: [],
         link: "/",

@@ -3,7 +3,7 @@
   /* padding: 10px; */
   /* box-sizing: border-box; */
   margin-left: 20px;
-  width: 312px;
+  width: 200px;
   /* background-color: yellow; */
 }
 .selectBox {
@@ -25,12 +25,12 @@
   position: absolute;
 }
 #checkboxes {
-  background-color: rgb(218, 211, 211);
+  background-color: white;
   border: 1px solid gray;
   border-top: 1px solid #e3e1e1;
   margin-top: 0px;
   padding: 10px 5px;
-  width: 312px;
+  width: 200px;
   position: absolute;
   z-index: 10;
 }

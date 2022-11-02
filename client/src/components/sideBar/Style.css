@@ -27,7 +27,7 @@
 }
 
 .sidebar-menu {
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .sidebar li {
@@ -36,7 +36,8 @@
 
 .sidebar a {
   color: #ffffff;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .sidebar a span:last-child {
@@ -77,5 +78,6 @@
   .sidebar li {
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 }
